@@ -1,143 +1,202 @@
 # Campo Minado 💣
 
-Um jogo clássico de Campo Minado implementado em Python, oferecendo uma experiência nostálgica e desafiadora para todos os níveis de jogadores.
+Um jogo clássico de Campo Minado implementado em Python com Pygame, oferecendo uma experiência visual moderna e desafiadora com interface gráfica intuitiva.
 
 ## 📋 Descrição
 
-O Campo Minado é um jogo de lógica onde o objetivo é limpar um campo minado sem detonar nenhuma mina. O jogador deve usar pistas numéricas para determinar onde as minas estão localizadas e marcar as células suspeitas. Este projeto implementa todas as funcionalidades clássicas do jogo com uma interface intuitiva.
+O Campo Minado é um jogo de lógica onde o objetivo é limpar um campo minado sem detonar nenhuma mina. O jogador deve usar pistas numéricas para determinar onde as minas estão localizadas e marcar as células suspeitas com bandeiras. Este projeto implementa uma versão moderna do clássico jogo com gráficos coloridos e controles responsivos.
 
 ### ✨ Funcionalidades
 
-- **Interface Gráfica**: Interface amigável e responsiva
-- **Múltiplos Níveis**: Iniciante, Intermediário e Avançado
-- **Sistema de Marcação**: Marque células suspeitas com bandeiras
-- **Contador de Minas**: Acompanhe quantas minas restam
-- **Cronômetro**: Desafie-se a melhorar seus tempos
-- **Reiniciar Jogo**: Comece uma nova partida a qualquer momento
+- **Interface Gráfica Moderna**: Desenvolvida com Pygame para uma experiência visual aprimorada
+- **Campo 18x18**: Tabuleiro de tamanho intermediário com 42 bombas
+- **Sistema de Marcação**: Marque células suspeitas com bandeiras vermelhas
+- **Contador de Bombas**: Acompanhe quantas bombas restam para marcar
+- **Proteção no Primeiro Clique**: Garante que o primeiro clique nunca seja uma bomba
+- **Revelação Automática**: Células vazias revelam automaticamente áreas adjacentes
+- **Cores Diferenciadas**: Cada número tem sua própria cor para melhor visualização
+- **Botão Reiniciar**: Comece uma nova partida instantaneamente
+- **Detecção de Vitória**: Sistema automático de verificação de vitória
 
 ## 🎮 Como Jogar
 
-1. **Clique em uma célula** para revelá-la
-2. **Números** indicam quantas minas estão nas células adjacentes
-3. **Clique com o botão direito** para marcar/desmarcar uma célula como mina
-4. **Objetivo**: Revelar todas as células que não contêm minas
-5. **Cuidado**: Se clicar em uma mina, o jogo termina!
+### Controles
+- **Clique Esquerdo**: Revela uma célula
+- **Clique Direito**: Marca/desmarca uma célula com bandeira vermelha
+- **Botão Reiniciar**: Inicia uma nova partida
 
-### 🎯 Níveis de Dificuldade
+### Objetivo
+1. **Revelar todas as células** que não contêm bombas
+2. **Usar os números** como pistas - eles indicam quantas bombas estão nas 8 células adjacentes
+3. **Marcar células suspeitas** com bandeiras para não clicar nelas acidentalmente
+4. **Evitar as bombas**: Se clicar em uma bomba, o jogo termina
 
-- **Iniciante**: 9x9 campo com 10 minas
-- **Intermediário**: 16x16 campo com 40 minas  
-- **Avançado**: 30x16 campo com 99 minas
+### 🎯 Especificações do Jogo
+
+- **Tamanho do Campo**: 18x18 células (324 células total)
+- **Número de Bombas**: 42 bombas
+- **Dificuldade**: Intermediária (13% das células contêm bombas)
+- **Primeira Jogada Segura**: O primeiro clique nunca será uma bomba
+
+### 🎨 Sistema de Cores
+
+Os números são exibidos em cores diferentes para facilitar a identificação:
+- **1**: Azul
+- **2**: Verde  
+- **3**: Vermelho
+- **4**: Roxo
+- **5**: Marrom
+- **6**: Azul petróleo
+- **7**: Preto
+- **8**: Cinza escuro
 
 ## 🚀 Instalação e Execução
 
 ### Pré-requisitos
 
 - Python 3.6 ou superior
-- Biblioteca Tkinter (geralmente incluída na instalação padrão do Python)
+- Pygame (biblioteca para jogos em Python)
 
 ### Instalação
 
-1. Clone o repositório:
+1. **Clone o repositório**:
 ```bash
 git clone https://github.com/GiovanneRocha/Campo-Minado.py.git
 cd Campo-Minado.py
 ```
 
-2. Verifique se possui o Python instalado:
+2. **Instale o Pygame**:
 ```bash
-python --version
+pip install pygame
 ```
 
-3. Execute o jogo:
+Ou se você estiver usando Python 3:
+```bash
+pip3 install pygame
+```
+
+3. **Execute o jogo**:
 ```bash
 python campo_minado.py
 ```
 
-### Execução Alternativa
-
-Se você tiver problemas com `python`, tente:
+Ou:
 ```bash
 python3 campo_minado.py
 ```
 
-## 🎲 Instruções de Uso
+### Instalação Alternativa (usando requirements.txt)
 
-### Controles do Mouse
-- **Clique esquerdo**: Revela uma célula
-- **Clique direito**: Marca/desmarca uma célula com bandeira
-- **Clique duplo**: Revela células adjacentes (quando o número de bandeiras ao redor corresponde ao número da célula)
+Se você preferir usar um arquivo de dependências:
 
-### Interface
-- **Contador de Minas**: Mostra quantas minas restam para marcar
-- **Cronômetro**: Exibe o tempo decorrido
-- **Botão Reiniciar**: Inicia uma nova partida
-- **Seletor de Dificuldade**: Escolha entre os níveis disponíveis
+1. Crie um arquivo `requirements.txt`:
+```
+pygame>=2.0.0
+```
+
+2. Instale as dependências:
+```bash
+pip install -r requirements.txt
+```
+
+## 🎲 Instruções Detalhadas
+
+### Iniciando o Jogo
+- O jogo abre com um campo 18x18 totalmente coberto
+- Contador de bombas mostra "42" no canto superior esquerdo
+- Botão "Reiniciar" disponível no canto superior direito
+
+### Durante o Jogo
+- **Células Cobertas**: Aparecem em cinza
+- **Células Reveladas**: Aparecem em branco
+- **Números**: Mostram quantas bombas estão nas células adjacentes
+- **Bandeiras**: Triângulos vermelhos indicam células marcadas
+- **Bombas**: Círculos pretos (visíveis apenas quando o jogo termina)
+
+### Fim do Jogo
+- **Vitória**: Quando todas as células sem bomba são reveladas
+- **Derrota**: Quando uma bomba é clicada
+- **Reiniciar**: Clique no botão verde para jogar novamente
 
 ## 🏆 Estratégias e Dicas
 
-- Comece pelas bordas e cantos do campo
-- Use números para deduzir onde estão as minas
-- Marque células que você tem certeza que contêm minas
-- Procure por padrões comuns (1-2-1, 1-2-2-1, etc.)
-- Quando em dúvida, use probabilidade para fazer a melhor escolha
+### Estratégias Básicas
+- **Comece pelas bordas**: Células nas bordas têm menos vizinhos
+- **Use a lógica**: Se uma célula "1" já tem uma bandeira adjacente, as outras células ao redor são seguras
+- **Procure padrões**: Números isolados frequentemente indicam bombas óbvias
+
+### Padrões Comuns
+- **Células "1" em cantos**: Geralmente têm a bomba na diagonal
+- **Sequência "1-2-1"**: A bomba geralmente está no meio
+- **Células "8"**: Todas as células adjacentes são bombas
+
+### Dicas Avançadas
+- Conte as bandeiras ao redor de números revelados
+- Use o processo de eliminação
+- Quando em dúvida, escolha células mais afastadas de números altos
 
 ## 🛠️ Tecnologias Utilizadas
 
 - **Python 3.x**: Linguagem principal
-- **Tkinter**: Interface gráfica
-- **Random**: Geração aleatória de posições das minas
-- **Time**: Controle do cronômetro
+- **Pygame**: Biblioteca para interface gráfica e jogos
+- **Random**: Geração aleatória de posições das bombas
+- **Sys**: Controle do sistema (fechar o jogo)
 
-## 📁 Estrutura do Projeto
+## ⚙️ Configurações Técnicas
 
-```
-Campo-Minado.py/
-├── campo_minado.py          # Arquivo principal do jogo
-├── README.md                # Este arquivo
-└── assets/                  # Recursos do jogo (se aplicável)
-    ├── icons/              # Ícones do jogo
-    └── sounds/             # Sons do jogo (opcional)
-```
+### Constantes do Jogo
+- **Resolução da Tela**: 600x700 pixels
+- **Tamanho das Células**: 32x32 pixels
+- **Taxa de Quadros**: 60 FPS
+- **Fonte**: Padrão do sistema (24px para números, 36px para interface)
+
+### Personalização
+Você pode modificar facilmente as seguintes configurações no código:
+- `TAMANHO_GRADE`: Tamanho do campo (atual: 18x18)
+- `NUM_BOMBAS`: Número de bombas (atual: 42)
+- `TAMANHO_CELULA`: Tamanho de cada célula em pixels
+- `CORES_NUMEROS`: Cores dos números de 1 a 8
 
 ## 🤝 Contribuindo
 
-Contribuições são bem-vindas! Sinta-se à vontade para:
+Contribuições são bem-vindas! Algumas ideias para melhorias:
 
-1. Fazer um fork do projeto
-2. Criar uma branch para sua feature (`git checkout -b feature/nova-funcionalidade`)
+### Funcionalidades Sugeridas
+- [ ] Diferentes níveis de dificuldade
+- [ ] Sistema de cronômetro
+- [ ] Recordes pessoais
+- [ ] Efeitos sonoros
+- [ ] Animações de transição
+- [ ] Temas personalizáveis
+
+### Como Contribuir
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/nova-funcionalidade`)
 3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
 4. Push para a branch (`git push origin feature/nova-funcionalidade`)
-5. Abrir um Pull Request
+5. Abra um Pull Request
 
-## 🐛 Problemas Conhecidos
+## 🐛 Troubleshooting
 
-- Liste aqui qualquer problema conhecido ou limitação do projeto
+### Problemas Comuns
 
-## 📋 Roadmap
+**"ModuleNotFoundError: No module named 'pygame'"**
+- Solução: Instale o Pygame usando `pip install pygame`
 
-- [ ] Adicionar sons e efeitos sonoros
-- [ ] Implementar sistema de pontuação
-- [ ] Adicionar modo multiplayer
-- [ ] Criar temas personalizáveis
-- [ ] Implementar salvamento de estatísticas
+**Jogo não inicia ou tela preta**
+- Verifique se o Pygame está instalado corretamente
+- Tente executar com `python3` em vez de `python`
 
-## 📝 Licença
+**Performance lenta**
+- Verifique se sua máquina atende aos requisitos mínimos
+- Feche outros programas que consomem recursos
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+## 📊 Estatísticas do Jogo
 
-## 👨‍💻 Autor
-
-**Giovanne Rocha**
-- GitHub: [@GiovanneRocha](https://github.com/GiovanneRocha)
-- LinkedIn: [Seu LinkedIn](https://linkedin.com/in/seu-perfil)
-
-## 🙏 Agradecimentos
-
-- Inspirado no clássico jogo Campo Minado da Microsoft
-- Agradecimentos especiais à comunidade Python
-- Obrigado a todos que contribuíram com feedbacks e sugestões
-
----
+- **Células Totais**: 324
+- **Bombas**: 42
+- **Células Seguras**: 282
+- **Densidade de Bombas**: 13%
+- **Probabilidade de Vitória**: Depende da habilidade do jogador
 
 ⭐ **Gostou do projeto? Deixe uma estrela!** ⭐
